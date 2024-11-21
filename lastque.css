@@ -1,0 +1,93 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+#sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#sidebar h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+#resume-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#resume-list li {
+    padding: 10px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#file-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+#chat {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#chat h3 {
+    margin: 0 0 10px;
+}
+
+#question-output div {
+    padding: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#question-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+#subjective-btn, #objective-btn {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#objective-btn {
+    margin-right: 0;
+}

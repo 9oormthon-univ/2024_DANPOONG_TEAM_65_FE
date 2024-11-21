@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자소서 관리 시스템</title>
+    <link rel="stylesheet" href="lastque.css">
+</head>
+<body>
+    <div id="sidebar">
+        <h2>지난 자소서</h2>
+        <ul id="resume-list">
+            <!-- 저장된 자소서 목록 -->
+        </ul>
+        <button id="file-btn">새 자기소개서 파일첨부</button>
+        <input type="file" id="file-input" style="display:none" />
+    </div>
+    <div id="content">
+        <div id="chat">
+            <h3>지난 질문들</h3>
+            <div id="question-output">
+                <!-- 이전 질문들이 여기에 표시됩니다 -->
+            </div>
+        </div>
+        <div id="question-controls">
+            <button id="subjective-btn">주관식 질문 생성</button>
+            <button id="objective-btn">객관식 질문 생성</button>
+        </div>
+    </div>
+    <script src="lastque.js"></script>
+</body>
+</html>
