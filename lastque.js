@@ -3,30 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileBtn = document.getElementById('file-btn');
     const selectedResumeName = document.getElementById('selected-resume-name');
 
-    const API_BASE_URL = 'http://13.124.165.183:8080'; // 백엔드 API의 기본 URL
+    const LOCAL_STORAGE_KEY = 'resumes'; // 로컬스토리지 키
+    let resumes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []; // 로컬스토리지에서 데이터 로드
 
     // 초기 자소서 목록 표시
-    loadResumes();
-
-    // 자소서 목록 가져오기
-    async function loadResumes() {
-        try {
-            const response = await fetch(`${API_BASE_URL}/api/selfIntroduce`);
-            const resumes = await response.json();
-            displayResumes(resumes);
-        } catch (error) {
-            console.error('Error fetching resumes:', error);
-            alert('자소서 목록을 불러오는 중 오류가 발생했습니다.');
-        }
-    }
+    displayResumes();
 
     // 자소서 목록 표시
-    function displayResumes(resumes) {
+    function displayResumes() {
         resumeList.innerHTML = '';
         if (resumes.length === 0) {
             resumeList.innerHTML = '<li>저장된 자소서가 없습니다.</li>';
         } else {
-            resumes.forEach((resume) => {
+            resumes.forEach((resume, index) => {
                 const listItem = document.createElement('li');
                 listItem.textContent = resume.name;
                 listItem.addEventListener('click', () => {
@@ -37,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 deleteBtn.textContent = '삭제';
                 deleteBtn.addEventListener('click', (e) => {
                     e.stopPropagation(); // 클릭 이벤트 전파 방지
-                    deleteResume(resume.id); // 백엔드로 삭제 요청
+                    deleteResume(index); // 로컬스토리지에서 삭제
                 });
                 listItem.appendChild(deleteBtn);
                 resumeList.appendChild(listItem);
@@ -51,21 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 자소서 삭제
-    async function deleteResume(resumeId) {
-        try {
-            const response = await fetch(`${API_BASE_URL}/api/selfIntroduce/${resumeId}`, {
-                method: 'DELETE',
-            });
-            if (response.ok) {
-                alert('자소서가 성공적으로 삭제되었습니다!');
-                loadResumes(); // 목록 갱신
-            } else {
-                alert('자소서를 삭제하는 중 오류가 발생했습니다.');
-            }
-        } catch (error) {
-            console.error('Error deleting resume:', error);
-            alert('자소서를 삭제하는 중 오류가 발생했습니다.');
-        }
+    function deleteResume(index) {
+        resumes.splice(index, 1); // 배열에서 삭제
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resumes)); // 로컬스토리지 업데이트
+        alert('자소서가 성공적으로 삭제되었습니다!');
+        displayResumes(); // 목록 갱신
     }
 
     // 파일 업로드 버튼 이벤트
@@ -103,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // TXT 파일 처리
-    async function handleTxt(file) {
+    function handleTxt(file) {
         const reader = new FileReader();
         reader.onload = () => {
             const content = reader.result;
@@ -166,25 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 자소서 저장
-    async function saveResume(fileName, content) {
-        try {
-            const response = await fetch(`${API_BASE_URL}/api/selfIntroduce`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name: fileName, content }),
-            });
-
-            if (response.ok) {
-                alert('자소서가 성공적으로 저장되었습니다!');
-                loadResumes(); // 목록 갱신
-            } else {
-                alert('자소서를 저장하는 중 오류가 발생했습니다.');
-            }
-        } catch (error) {
-            console.error('Error saving resume:', error);
-            alert('자소서를 저장하는 중 오류가 발생했습니다.');
-        }
+    function saveResume(fileName, content) {
+        resumes.push({ name: fileName, content });
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resumes)); // 로컬스토리지에 저장
+        alert('자소서가 성공적으로 저장되었습니다!');
+        displayResumes(); // 목록 갱신
     }
 });
