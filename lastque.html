@@ -5,21 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자소서 관리 시스템</title>
     <link rel="stylesheet" href="lastque.css">
+    <script type="module">
+        import * as pdfjsLib from './node_modules/pdfjs-dist/build/pdf.mjs';
+
+        // PDF.js worker 설정
+        pdfjsLib.GlobalWorkerOptions.workerSrc = './node_modules/pdfjs-dist/build/pdf.worker.mjs';
+    </script>
 </head>
 <body>
     <div id="sidebar">
-        <h2>지난 자소서</h2>
+        <h2>자소서 목록</h2>
+        <div id="selected-resume">
+            <!-- 현재 선택된 자소서 표시 -->
+            <h3>현재 선택된 자소서</h3>
+            <div id="selected-resume-name">선택된 자소서가 없습니다.</div>
+        </div>
         <ul id="resume-list">
             <!-- 저장된 자소서 목록 -->
+            <!-- 삭제 버튼이 각 항목에 추가됩니다 -->
         </ul>
         <button id="file-btn">새 자기소개서 파일첨부</button>
-        <input type="file" id="file-input" style="display:none" />
     </div>
     <div id="content">
         <div id="chat">
             <h3>지난 질문들</h3>
-            <div id="question-output">
-                <!-- 이전 질문들이 여기에 표시됩니다 -->
+            <div id="previous-questions-container">
+                <div id="previous-questions">
+                    <!-- 이전 질문들이 여기에 표시됩니다 -->
+                </div>
+                <div id="previous-pagination">
+                    <button id="prev-prev-questions-btn">이전</button>
+                    <span id="prev-page-indicator">1</span>
+                    <button id="next-prev-questions-btn">다음</button>
+                    <!-- 검색 기능 추가 -->
+                    <input id="search-prev-questions" type="text" placeholder="검색어 입력" />
+                    <button id="search-prev-questions-btn">검색</button>
+                </div>
+            </div>
+            <hr class="divider">
+            <h3>현재 질문들</h3>
+            <div id="current-questions-container">
+                <div id="current-questions">
+                    <!-- 현재 질문들이 여기에 표시됩니다 -->
+                </div>
+                <div id="current-pagination">
+                    <button id="prev-current-questions-btn">이전</button>
+                    <span id="current-page-indicator">1</span>
+                    <button id="next-current-questions-btn">다음</button>
+                </div>
             </div>
         </div>
         <div id="question-controls">
@@ -27,6 +60,6 @@
             <button id="objective-btn">객관식 질문 생성</button>
         </div>
     </div>
-    <script src="lastque.js"></script>
+    <script src="./lastque.js"></script>
 </body>
 </html>
