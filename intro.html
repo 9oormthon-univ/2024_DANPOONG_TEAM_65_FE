@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접신 - 면접의 신</title>
+    <script src="intro.js"></script>
+    <link rel="stylesheet" href="intro.css">
+    <link href="/image/logo.jpg" rel="shortcut icon" type="image/x-icon">
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="module">
+      import { kakaoLogin } from './intro.js';
+
+      Kakao.init('6ea77c139875f0a19445511bc99e3f4e');
+      console.log('Kakao SDK Initialized: ', Kakao.isInitialized());
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.loginButton').addEventListener('click', kakaoLogin);
+      });
+    </script>
+</head>
+<body>
+    <div class="intro">
+        <h1 class="title">면접의 신</h1>
+<!--        <img class="character" src="/image/character.png" width="250"/>-->
+    </div>
+
+    <div class="loginPage">
+        <div class="content">
+            <h1 class="title">면접의 신</h1>
+            <div class="loginButton" onClick="kakaoLogin()">
+                <img src='/image/kakao.png' width="300" alt="카카오 로그인"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@font-face{
+    font-family:'bitbit';
+    src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+.intro, .loginPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-top: 200px;
+    transition: opacity 2s ease;
+    font-family: 'bitbit', serif;
+    font-size: 50px;
+}
+
+.intro {
+    background-color: #EFFCFF;
+    color: #007bff;
+    z-index: 2;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.loginPage {
+    background-color: #007bff;
+    color: antiquewhite;
+    z-index: 1;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 300px;
+}
+
+.loginPage h1 {
+    margin-bottom: 150px;
+}
+
+.loginButton {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
