@@ -16,6 +16,7 @@ body {
     background-color: white;
     height: 10vh;
     position: relative;
+    padding-top: 15px;
 }
 
 .container {
