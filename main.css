@@ -16,22 +16,31 @@ body {
     background-color: white;
     height: 10vh;
     position: relative;
+    padding-top: 15px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
     display: flex;
-    font-family: 'bitbit', 'Arial';
-    color: #007bff;
+    font-family: 'bitbit', 'Arial', serif;
+    color: #234468;
     font-size: 60px;
     padding: 15px 0 0 20px;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .icon {
     display: flex;
-    justify-content: end;
-    gap: 100px;
-    margin-top: -55px;
-    margin-right: 100px;
+    gap: 80px;
+    margin: 25px 50px 0 0;
+    /*margin-right: 100px;*/
     /*padding: 0 50px 0 0;*/
 }
 
@@ -41,8 +50,8 @@ body {
     justify-content: center;
     align-items: center;
     position: relative; /* Tooltip 위치를 기준으로 설정 */
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     overflow: visible; /* Tooltip이 이미지 크기를 초과하도록 설정 */
 }
 
@@ -58,7 +67,7 @@ body {
     visibility: hidden;
     position: absolute;
     top: 105%;
-    left: 105%;
+    left: 80%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8); /* 어두운 반투명 배경 */
     color: white;
@@ -80,6 +89,61 @@ body {
     visibility: visible;
     opacity: 1;
 }
+
+.contents {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: absolute;
+    left: 10%;
+}
+
+.section {
+    text-align: left;
+}
+
+.section h1 {
+    display: inline-block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    font-size: 25px;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.section .h1-point {
+    color: #007bff;
+    display: inline-block;
+}
+
+.section .p-point {
+    color: #234468;
+    display: inline-block;
+    font-weight: 650;
+}
+
+.sectionImage {
+    display: flex;
+    border-radius: 8px;
+    border: 2px solid lightgray;
+    margin: 20px 0 20px 0;
+}
+
+.contents .title {
+}
+
+.contents .description {
+
+}
+
+
+
 
 .footer {
     background-color: white;
