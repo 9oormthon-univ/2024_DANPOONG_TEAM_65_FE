@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자소서 관리 시스템</title>
+    <link rel="stylesheet" href="savedque.css">
+    <script defer src="savedque.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 사이드바 -->
+        <div class="sidebar">
+            <h2>자소서 목록</h2>
+            <ul id="resume-list">
+                <!-- 자소서 목록이 동적으로 추가됨 -->
+            </ul>
+        </div>
+
+        <!-- 메인 화면 -->
+        <div class="main-content">
+            <div class="header">
+                <h1>질문 게시판</h1>
+                <div id="selected-resume">
+                    선택된 자소서: <span id="resume-name">없음</span>
+                </div>
+            </div>
+            <table class="question-table">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>질문 제목</th>
+                        <th>작성 날짜</th>
+                    </tr>
+                </thead>
+                <tbody id="question-list">
+                    <!-- 질문 리스트가 동적으로 추가됨 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
